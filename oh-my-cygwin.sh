@@ -4,16 +4,12 @@ set -e
 # cd home
 cd ~
 
-SIMPLE_BACKUP_SUFFIX=".orig"
-APT_CYG="$(mktemp /tmp/apt-cyg.XXXXXXXX)"
-
 # install apt-cyg
-wget --no-check-certificate "https://github.com/john-peterson/apt-cyg/raw/path/apt-cyg" -O "${APT_CYG}"
-chmod +x "${APT_CYG}"
+lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+install apt-cyg /bin
 
-# install some stuff like vim and git
-"${APT_CYG}" install zsh mintty vim curl git openssh
-
+# install some basic stuff
+apt-cyg install zsh mintty vim curl git openssh git-completion git-gui gitk ncurses nano
 
 # install OH MY ZSH
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -30,11 +26,8 @@ then
   install "${VIMRC_EXAMPLE}" ~/.vimrc
 fi
 
-# install apt-cyg
-install --backup "${APT_CYG}" /bin/apt-cyg
-
-# setting up zsh as default
-sed -i "s/$USER\:\/bin\/bash/$USER\:\/bin\/zsh/g" /etc/passwd
+# setting zsh as the default shell
+setx SHELL /bin/zsh
 
 # et voila just start it
 /usr/bin/env zsh
