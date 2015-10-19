@@ -13,7 +13,7 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 # Create initial /etc/zshenv
 [[ ! -e /etc/zshenv ]] && echo export PATH=/usr/bin:\$PATH > /etc/zshenv
 
-install -c ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+install --c ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 #setting up vim
 VIMRC_EXAMPLE=`find /usr/share/vim -type f -name vimrc_example.vim | head -n 1`
