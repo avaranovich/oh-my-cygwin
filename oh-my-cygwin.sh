@@ -4,10 +4,6 @@ set -e
 # cd home
 cd ~
 
-# install apt-cyg
-lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-install apt-cyg /bin
-
 # install some basic stuff
 apt-cyg install zsh mintty vim curl git openssh git-completion git-gui gitk ncurses nano
 
